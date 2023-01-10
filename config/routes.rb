@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
-  get '/posts', to: 'posts#index'
-  resources :posts
+  get 'sessions/new'
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :users, only: [:new, :create, :show]
+  resources :posts do
+    collection do
+      post :confirm
+    end
+  end
 end
