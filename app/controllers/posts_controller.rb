@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  include SessionsHelper
   before_action :set_post, only: [:show, :edit, :update, :destroy] # destroyアクションを追加
 
   def index
@@ -10,11 +11,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    
+
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      
+
       redirect_to posts_path, notice: "投稿しました！"
     else
 
@@ -23,12 +24,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def edit
     @post = Post.find(params[:id])
-   
+
   end
 
   def update
@@ -48,7 +49,7 @@ class PostsController < ApplicationController
   def confirm
     @post = Post.new(post_params)
   end
-  
+
   private
 
   def post_params
