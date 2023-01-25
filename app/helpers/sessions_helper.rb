@@ -1,6 +1,6 @@
 module SessionsHelper
   def current_user
-    debugger
+
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
