@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :redirect_to_posts, only: %i[new create]
+
   def new
     @user = User.new
   end

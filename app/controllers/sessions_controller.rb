@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :redirect_to_posts, only: %i[new create]
+
   def new
   end
 
